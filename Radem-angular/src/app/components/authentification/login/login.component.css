@@ -1,0 +1,18 @@
+.alert {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.alert-icon {
+  margin-right: 10px;
+}
+
+.alert-icon i {
+  font-size: 20px;
+}
+
+.alert-message {
+  font-size: 16px;
+}

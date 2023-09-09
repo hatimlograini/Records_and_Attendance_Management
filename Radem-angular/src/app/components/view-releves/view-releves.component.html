@@ -1,0 +1,150 @@
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+    <!-- Navbar -->
+    <app-nav-bar></app-nav-bar>
+
+    <!-- /.navbar -->
+
+    <app-side-bar></app-side-bar>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0"></h1>
+            </div>
+            <!-- /.col -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+
+                <li class="breadcrumb-item"><a href="add-releve">
+                  <i class='bx bx-bookmark-alt-plus' ></i>
+                  ajouter
+                </a></li>
+              </ol>
+            </div>
+            <!-- /.col -->
+          </div>
+          <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid" >
+          <!-- Info boxes -->
+          <br>
+          <!-- /.row -->
+
+          <!-- /.row -->
+
+          <!-- Main row -->
+          <div class="card" >
+            <div class="card-header">
+              <h3 class="card-title">Releves</h3>
+              <div class="card-tools">
+                <button
+                  type="button"
+                  class="btn btn-tool"
+                  data-card-widget="collapse"
+                  title="Collapse"
+                >
+                  <i class="fas fa-minus"></i>
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-tool"
+                  data-card-widget="remove"
+                  title="Remove"
+                >
+                  <i class="fas fa-times"></i>
+                </button>
+              </div>
+            </div>
+            <div class="card-body p-0">
+              <div class="row">
+                <div class="col-md-6 col-lg-4">
+                  <div class="form-group">
+                    <label for="searchCOD_RLR" style="margin-left: 10px;margin-top: 10px;">Recherche par code Releveur:</label>
+                    <input type="text" style="margin-left: 20px;width: 160px;" id="searchCOD_RLR" class="form-control form-control-sm" [(ngModel)]="searchCOD_RLR" (input)="applySearch()">
+                  </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                  <div class="form-group">
+                    <label for="searchDATE_REL" style="margin-left: 10px;margin-top: 10px;">Recherche par Date Releve:</label>
+                    <input type="date" style="margin-left: 20px; width: 160px;" id="searchDATE_REL" class="form-control form-control-sm " [(ngModel)]="searchDATE_REL" (input)="applySearch()">
+                  </div>
+                </div>
+                <div class="col-lg-4 text-right">
+                  <button class="btn btn-success" style="margin-right: 10px; margin-top: 10px;" (click)="exportToExcel()">Exporter vers Excel</button>
+                </div>
+              </div>
+
+              <div class="table-responsive" style="margin-top: 20px;">
+                <div *ngIf="isLoading" class="loading-spinner">
+                  <mat-spinner diameter="32"></mat-spinner>
+                </div>
+
+
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Code Releveur</th>
+                      <th>Date relève</th>
+                      <th>Nombre Total de Commandes</th>
+                      <th>Année</th>
+                      <th>Order de Lecture des Paquets</th>
+                      <th>Début de tournée</th>
+                      <th>Fin de tournée</th>
+                      <th class="project-actions text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let releve of filteredReleves | paginate: { itemsPerPage: pageSize, currentPage: page }; let i = index">
+                      <td>{{ releve.COD_RLR }}</td>
+                      <td>{{ releve.DATE_REL }}</td>
+                      <td>{{ releve.NBR_TOTAL_ORDER }}</td>
+                      <td>{{ releve.ANN_TRN }}</td>
+                      <td>{{ releve.ORDRE_LECTURE_PAQUET }}</td>
+                      <td>{{ releve.TOURNEE_DEBUT }}</td>
+                      <td>{{ releve.TOURNEE_FIN }}</td>
+                      <td class="project-actions text-right">
+                        <a class="btn btn-info btn-sm" href="/edit-releve/{{ releve.id }}">
+                          <i class="fas fa-pencil-alt"></i>
+                        </a>
+                        <a class="btn btn-danger btn-sm" (click)="delete(releve.id, 1)">
+                          <i class="fas fa-trash"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="pagination">
+                <pagination-controls (pageChange)="page = $event"></pagination-controls>
+              </div>
+            </div>
+          </div>
+
+          <!--/. container-fluid -->
+        </div>
+      </section>
+      <!-- /.content -->
+
+      <!-- /.content-wrapper -->
+
+      <!-- Control Sidebar -->
+
+      <!-- /.control-sidebar -->
+    </div>
+  </div>
+  <!-- ./wrapper -->
+</body>
+
+

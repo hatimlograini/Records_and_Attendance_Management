@@ -1,0 +1,117 @@
+<body class="hold-transition sidebar-mini">
+  <div class="wrapper">
+    <!-- Navbar -->
+    <app-nav-bar></app-nav-bar>
+
+    <!-- /.navbar -->
+
+    <app-side-bar></app-side-bar>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <div class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0">Ajouter Releve</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                <li class="breadcrumb-item active">ajouter</li>
+              </ol>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+      </div>
+      <!-- /.content-header -->
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+          <!-- Info boxes -->
+
+          <!-- /.row -->
+
+
+          <!-- /.row -->
+
+          <!-- Main row -->
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card card-primary">
+                <div class="card-header">
+
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                      <i class="fas fa-minus"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <form [formGroup]="releveForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                      <label for="inputCOD_RLR">Code Releveur</label>
+                      <input type="text" id="inputCOD_RLR" class="form-control" formControlName="COD_RLR">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputCOUNT_DOWN_ORDER">Commande à compte à rebours</label>
+                      <input type="text" id="inputCOUNT_DOWN_ORDER" class="form-control" formControlName="COUNT_DOWN_ORDER">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputDATE_REL">Date relève</label>
+                      <input type="date" id="inputDATE_REL" class="form-control" formControlName="DATE_REL">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputNBR_TOTAL_ORDER">Nombre Total de Commandes</label>
+                      <input type="text" id="inputNBR_TOTAL_ORDER" class="form-control" formControlName="NBR_TOTAL_ORDER">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputANN_TRN">Année</label>
+                      <input type="text" id="inputANN_TRN" class="form-control" formControlName="ANN_TRN">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPER_TRN">PER_TRN</label>
+                      <input type="text" id="inputPER_TRN" class="form-control" formControlName="PER_TRN">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputORDRE_LECTURE_PAQUET">Order de Lecture des Paquets</label>
+                      <input type="text" id="inputORDRE_LECTURE_PAQUET" class="form-control" formControlName="ORDRE_LECTURE_PAQUET">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputTOURNEE_DEBUT">Début de tournée</label>
+                      <input type="text" id="inputTOURNEE_DEBUT" class="form-control" formControlName="TOURNEE_DEBUT">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputTOURNEE_FIN">Fin de tournée</label>
+                      <input type="text" id="inputTOURNEE_FIN" class="form-control" formControlName="TOURNEE_FIN">
+                    </div>
+                    <div class="alert alert-danger" *ngIf="errorMessage">{{ errorMessage }}</div>
+                    <button type="submit" class="btn btn-block bg-gradient-primary">Ajouter</button>
+                  </form>
+
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+          </div>
+
+          <!-- /.row -->
+        </div><!--/. container-fluid -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+
+    <!-- /.control-sidebar -->
+
+
+  </div>
+  <!-- ./wrapper -->
+
+  </body>

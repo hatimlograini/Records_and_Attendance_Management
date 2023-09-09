@@ -1,0 +1,146 @@
+  <body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+      <!-- Navbar -->
+      <app-nav-bar></app-nav-bar>
+
+      <!-- /.navbar -->
+
+      <app-side-bar></app-side-bar>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+          <div class="container-fluid">
+
+            <div class="row mb-2">
+              <div class="col-sm-6">
+                <h1 class="m-0"></h1>
+              </div>
+              <!-- /.col -->
+              <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                  <li class="breadcrumb-item">
+
+                  </li>
+                </ol>
+              </div>
+              <!-- /.col -->
+            </div>
+            <!-- /.row -->
+          </div>
+          <!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="container-fluid">
+            <!-- Info boxes -->
+            <br />
+
+            <!-- Main row -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Employees</h3>
+                <div class="card-tools">
+                  <button
+                    type="button"
+                    class="btn btn-tool"
+                    data-card-widget="collapse"
+                    title="Collapse"
+                  >
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-tool"
+                    data-card-widget="remove"
+                    title="Remove"
+                  >
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="card-body p-0">
+
+
+                <div class="col-lg-4 d-flex justify-content-end">
+                  <button
+                    class="btn btn-primary"
+                    (click)="toggleFilterState()"
+                    style="margin-top: 10px; margin-right: 100px; width: 200px;"
+                  >
+                    {{ filterActive ? 'Tous les employés' : 'Filter Present' }}
+                  </button>
+
+                  <div class="col-lg-4 text-right">
+                    <button class="btn btn-success" style="margin-left:780px; margin-top: 10px;width:170px " (click)="exportToExcel()">Exporter vers Excel</button>
+                  </div>
+                </div>
+
+
+
+
+                <div class="table-responsive" style="margin-top: 20px;">
+                  <div *ngIf="isLoading" class="loading-spinner">
+                    <mat-spinner diameter="40"></mat-spinner>
+                  </div>
+
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Nom Complet</th>
+                        <th>Dernière heure de présence</th>
+                        <th>Présence totale</th>
+                        <th>Année</th>
+                        <th>Poste</th>
+                        <th>Année de début</th>
+                        <th>Département</th>
+                        <th class="project-actions text-right">Actions</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <tr *ngFor="let employe of Employes  | paginate: { itemsPerPage: pageSize, currentPage: page }; let i = index">
+                        <td [class.bg-primary]="isToday(employe.last_attendance_time)">{{ employe.name }}</td>
+                        <td [class.bg-primary]="isToday(employe.last_attendance_time)">{{ employe.last_attendance_time }}</td>
+                        <td [class.bg-primary]="isToday(employe.last_attendance_time)">{{ employe.total_attendance }}</td>
+                        <td [class.bg-primary]="isToday(employe.last_attendance_time)">{{ employe.year }}</td>
+                        <td [class.bg-primary]="isToday(employe.last_attendance_time)">{{ employe.position }}</td>
+                        <td [class.bg-primary]="isToday(employe.last_attendance_time)">{{ employe.starting_year }}</td>
+                        <td [class.bg-primary]="isToday(employe.last_attendance_time)">{{ employe.Department }}</td>
+                        <td [class.bg-primary]="isToday(employe.last_attendance_time)"class="project-actions text-right">
+                          <a class="btn btn-danger btn-sm" (click)="deleteEmploye(employe.id)">
+                            <i class="fas fa-trash"></i>
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div *ngIf="isLoading" class="loading-spinner">
+                    <mat-spinner diameter="32"></mat-spinner>
+                  </div>
+                </div>
+
+                <div class="pagination">
+                  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+                </div>
+              </div>
+            </div>
+
+            <!--/. container-fluid -->
+          </div>
+        </section>
+        <!-- /.content -->
+
+        <!-- /.content-wrapper -->
+
+        <!-- Control Sidebar -->
+
+        <!-- /.control-sidebar -->
+      </div>
+    </div>
+
+    <!-- ./wrapper -->
+  </body>

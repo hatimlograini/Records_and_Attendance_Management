@@ -1,0 +1,65 @@
+<body class="hold-transition register-page">
+  <div class="register-box">
+    <div class="register-logo">
+      <a ><b>Redem</b>Projet</a>
+    </div>
+
+    <div class="card">
+      <div class="card-body register-card-body">
+        <p class="login-box-msg">Créer un nouveau compte d'adhésion</p>
+
+        <form  (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Full name" name="name" ngModel>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Email" name="email" ngModel>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="Password" name="password" ngModel>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="Retype password" name="password_confirmation" ngModel>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+
+            <!-- /.col -->
+            <div class="col-5">
+              <button type="submit" class="btn btn-primary btn-block">S'inscrire</button>
+            </div>
+            <!-- /.col -->
+          </div>
+        </form>
+
+<br>
+
+        <a routerLink="/login" class="text-center">J'ai déjà un compte d'adhésion.</a>
+      </div>
+      <!-- /.form-box -->
+    </div><!-- /.card -->
+  </div>
+  <!-- /.register-box -->
+
+  <!-- jQuery -->
+
+  </body>

@@ -1,0 +1,59 @@
+<body class="hold-transition login-page">
+  <div class="login-box">
+    <div class="login-logo">
+      <a ><b>Redem</b>Projet</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="card">
+      <div class="card-body login-card-body">
+        <p class="login-box-msg">Connectez-vous pour commencer votre session.</p>
+
+        <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+          <div class="input-group mb-3">
+            <input type="email" class="form-control" placeholder="Email" name="email" ngModel>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-envelope"></span>
+              </div>
+            </div>
+          </div>
+          <div class="input-group mb-3">
+            <input type="password" class="form-control" placeholder="Password" name="password" ngModel>
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-lock"></span>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="errorMessage" class="alert alert-danger">
+            <div class="alert-icon">
+              <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="alert-message">
+              {{ errorMessage }}
+            </div>
+          </div>
+          <div class="row">
+
+            <div class="col-5">
+              <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+            </div>
+          </div>
+        </form>
+
+
+
+        <!-- /.social-auth-links -->
+
+
+        <p class="mb-0">
+          <a routerLink="/register" class="text-center">Créer un nouveau compte</a>
+        </p>
+      </div>
+      <!-- /.login-card-body -->
+    </div>
+  </div>
+  <!-- /.login-box -->
+
+
+  </body>
